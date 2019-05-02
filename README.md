@@ -1,1 +1,1 @@
-# CSGO-Fast-Tranfer-Settings-Batch-Files
+# CSGO快速转移设置bat脚本
