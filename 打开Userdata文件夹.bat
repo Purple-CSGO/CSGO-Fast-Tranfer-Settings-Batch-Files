@@ -3,15 +3,23 @@ chcp 936
 title 打开Userdata文件夹 - Purp1e
 cls
 ::Created By Purp1e  |  https://space.bilibili.com/73115492
+::此处两行代码感谢CSGO工具箱制作者~
+echo wscript.echo CreateObject("WScript.Shell").RegRead("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 730\InstallLocation") >%temp%\csgopath~.vbs
+for /f "delims=" %%a in ('cscript //nologo %temp%\csgopath~.vbs') do set "p=%%a"
 
-::start "" "steam://run"
+set p="%p:steamapps\common\Counter-Strike Global Offensive=userdata%"
+if not exist "%p%" goto start
+
+goto end
 
 :start
 for /f "delims=" %%a in ('wmic process where "name='steam.exe'" get executablepath^ /value^|find "="') do set "%%a"
-if exist %executablepath%  goto steam
+set p="%executablepath:steam.exe=userdata%"
+if exist %p%  goto end
 
 for /f "delims=" %%a in ('wmic process where "name='csgolauncher.exe'" get executablepath^ /value^|find "="') do set "%%a"
-if exist %executablepath%  goto perfectworld
+set p="%executablepath:csgolauncher.exe=userdata%"
+if exist %p%  goto end
 
 cls
 echo ============================================================
@@ -20,11 +28,9 @@ echo ============================================================
 pause
 goto start
 
-:steam
-start "" "%executablepath:steam.exe=userdata%"
-goto end
-
-:perfectworld
-start "" "%executablepath:csgolauncher.exe=userdata%"
-
 :end
+start "" ""%p%""
+
+
+
+
