@@ -7,8 +7,8 @@ cls
 echo wscript.echo CreateObject("WScript.Shell").RegRead("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 730\InstallLocation") >%temp%\csgopath~.vbs
 for /f "delims=" %%a in ('cscript //nologo %temp%\csgopath~.vbs') do set "p=%%a"
 
-set p="%p:steamapps\common\Counter-Strike Global Offensive=userdata%"
 if not exist "%p%" goto start
+set p="%p:steamapps\common\Counter-Strike Global Offensive=userdata%"
 
 goto end
 
@@ -79,8 +79,8 @@ set /p launch=请输入您的启动项:
 >>打开CFG文件夹(%name%).bat echo cls
 >>打开CFG文件夹(%name%).bat echo echo wscript.echo CreateObject("WScript.Shell").RegRead("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 730\InstallLocation") >%%temp%%\csgopath~.vbs
 >>打开CFG文件夹(%name%).bat echo for /f "delims=" %%%%a in ('cscript //nologo %%temp%%\csgopath~.vbs') do set "p=%%%%a"
->>打开CFG文件夹(%name%).bat echo set p="%%p:steamapps\common\Counter-Strike Global Offensive=userdata%%\%id%\730\local\cfg"
 >>打开CFG文件夹(%name%).bat echo if not exist "%%p%%" goto start
+>>打开CFG文件夹(%name%).bat echo set p="%%p:steamapps\common\Counter-Strike Global Offensive=userdata%%\%id%\730\local\cfg"
 >>打开CFG文件夹(%name%).bat echo goto end
 >>打开CFG文件夹(%name%).bat echo :start
 >>打开CFG文件夹(%name%).bat echo for /f "delims=" %%%%a in ('wmic process where "name='steam.exe'" get executablepath^ /value^|find "="') do set "%%%%a"
@@ -105,8 +105,8 @@ set /p launch=请输入您的启动项:
 >>快速转移设置(%name%).bat echo cls
 >>快速转移设置(%name%).bat echo echo wscript.echo CreateObject("WScript.Shell").RegRead("HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 730\InstallLocation") >%%temp%%\csgopath~.vbs
 >>快速转移设置(%name%).bat echo for /f "delims=" %%%%a in ('cscript //nologo %%temp%%\csgopath~.vbs') do set "p=%%%%a"
->>快速转移设置(%name%).bat echo set p="%%p:steamapps\common\Counter-Strike Global Offensive=userdata%%\%id%\730\local\cfg"
 >>快速转移设置(%name%).bat echo if not exist %%p%% goto start
+>>快速转移设置(%name%).bat echo set p="%%p:steamapps\common\Counter-Strike Global Offensive=userdata%%\%id%\730\local\cfg"
 >>快速转移设置(%name%).bat echo goto end
 >>快速转移设置(%name%).bat echo :start
 >>快速转移设置(%name%).bat echo for /f "delims=" %%%%a in ('wmic process where "name='steam.exe'" get executablepath^ /value^|find "="') do set "%%%%a"
